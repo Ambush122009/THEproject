@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The New Roaring '20s: Wealth in the 2020s</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .intro-screen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-screen::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            z-index: 1;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #b8b8b8;
+            margin-bottom: 3rem;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        .enter-btn {
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            background: transparent;
+            border: 2px solid #ffd700;
+            color: #ffd700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1;
+            font-family: 'Georgia', serif;
+            letter-spacing: 1px;
+        }
+
+        .enter-btn:hover {
+            background: #ffd700;
+            color: #0a0a0a;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .main-content {
+            display: none;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .artifact-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .artifact-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .artifact-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 25px 80px rgba(255, 215, 0, 0.4);
+        }
+
+        .artifact-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .artifact-text {
+            padding: 2rem;
+        }
+
+        .artifact-number {
+            font-size: 1rem;
+            color: #ffd700;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .artifact-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .artifact-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #c0c0c0;
+        }
+
+        .section:nth-child(even) .artifact-container {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .section:nth-child(odd) .artifact-container {
+            direction: rtl;
+        }
+
+        .section:nth-child(odd) .artifact-text {
+            direction: ltr;
+        }
+
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .conclusion {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            text-align: center;
+        }
+
+        .conclusion h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #ffd700;
+        }
+
+        .conclusion-text {
+            max-width: 800px;
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #e0e0e0;
+            margin-bottom: 3rem;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #ffd700;
+            max-width: 700px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-left: 4px solid #ffd700;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .artifact-container {
+                grid-template-columns: 1fr !important;
+                direction: ltr !important;
+            }
+            .section:nth-child(odd) .artifact-container {
+                direction: ltr !important;
+            }
+            .artifact-title { font-size: 2rem; }
+        }
+
+        .placeholder-img {
+            width: 100%;
+            background: linear-gradient(135deg, #2a2a3e 0%, #1a1a2e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .placeholder-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .interactive-stat {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 3px solid #ffd700;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .interactive-stat:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateX(10px);
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-screen" id="intro">
+        <h1>The New Roaring '20s</h1>
+        <p class="subtitle">A Museum of Wealth in the 2020s</p>
+        <button class="enter-btn" onclick="enterMuseum()">Enter the Museum</button>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <!-- Artifact 1: Anime Industry Explosion -->
+        <section class="section" data-section="1">
+            <div class="bg-pattern"></div>
+            <div class="artifact-container">
+                <div class="artifact-image">
+                    <div class="placeholder-img">
+                        <img src="Art01.jpeg" alt="Anime Industry">
+                    </div>
+                </div>
+                <div class="artifact-text">
+                    <div class="artifact-number">ARTIFACT 01</div>
+                    <h2 class="artifact-title">The Anime Gold Rush</h2>
+                    <p class="artifact-description">
+                        The anime industry really went off in the 2020. This was due to the boredom that came with home arrest during covid, turning the niche community into a multi-billion dollar global economy. For example, Demon Slayer: Mugen Train was the highest-grossing film of 2020 worldwide,  which earned the movie and Ufoltable(the studio) over $500 million. Streaming platforms like Crunchyroll sold to Sony for preposterously large amounts of money like $1.2 billion in 2021. All the while, anime conventions became massive gatherings fueling local passon and small businesses related to this industry.
+                    </p>
+                    <div class="interactive-stat"> Global anime market: $30+ billion by 2025</div>
+                    <p class="artifact-description" style="margin-top: 1rem;">
+                        This artifact shows how cultural products once dismissed as "cartoons" became legit wealth generators, creating millionaire voice actors, animators, and content creators. In our era wealth isn't just from industries like business or engineering but also in the storytelling and the entertainment that brought people all over the world together in an period of disconnect in our lives.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artifact 2: AI Revolution -->
+        <section class="section" data-section="2">
+            <div class="artifact-container">
+                <div class="artifact-image">
+                    <div class="placeholder-img">
+                        <img src="Art02.jpg" alt="AI Revolution">
+                    </div>
+                </div>
+                <div class="artifact-text">
+                    <div class="artifact-number">ARTIFACT 02</div>
+                    <h2 class="artifact-title">AI: Creating and Destroying Fortunes</h2>
+                    <p class="artifact-description">
+                        ChatGPT reached 100 million users faster than any app in history. OpenAI's value boalstered to $157 billion by 2025, while AI art tools like Midjourney created new creative economies. But this wealth came with lost lives too: voice actors, artists, and writers watched AI tools trained for a few hours impersonate their work and threaten the things they worked their entire lives for.
+                    </p>
+                    <div class="interactive-stat"> New roles created: Prompt engineers, AI ethicists, AI trainers</div>
+                    <div class="interactive-stat"> Jobs threatened: Traditional artists, writers, customer service</div>
+                    <p class="artifact-description" style="margin-top: 1rem;">
+                        Wealth in the AI age goes to people who own the technology, not really to the whose labor Ccreated it in the first palce. This artifact shows how innovation creates billionaires while, at the same time, disrupting millions of lower and middle class workers which happens multiple times through the American economic history.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artifact 3: Crypto Boom and Bust -->
+        <section class="section" data-section="3">
+            <div class="artifact-container">
+                <div class="artifact-image">
+                    <div class="placeholder-img">
+                        <img src="Art03.png" alt="Cryptocurrency">
+                    </div>
+                </div>
+                <div class="artifact-text">
+                    <div class="artifact-number">ARTIFACT 03</div>
+                    <h2 class="artifact-title">Digital Gold and Fool's Gold</h2>
+                    <p class="artifact-description">
+                        Bitcoin hit an all-time high of $69,000 in 2021, literally creating overnight millionaires and reviving the American dream of sudden wealth. NFTs sold for millions, Beeple's digital art earned $69 million. But by 2022, the crypto market crashed, destroying $2 trillion in value. 
+                    </p>
+                    <div class="interactive-stat">Peak crypto market cap: $3 trillion (2021)</div>
+                    <div class="interactive-stat">Lives ruined by speculation and scams</div>
+                    <p class="artifact-description" style="margin-top: 1rem;">
+                        Gatsby's parties funded by mysterious business dealings, likewise crypto promised wealth without clear sources. It represented the corruption of the get-rich-quick schemes that leave ordinary Americans holding the gambeling their bag while the early adopters took out the money on the oppurtunity. 
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artifact 4: Billionaire Space Race -->
+        <section class="section" data-section="4">
+            <div class="artifact-container">
+                <div class="artifact-image">
+                    <div class="placeholder-img">
+                        <img src="Art04.png" alt="Space Race">
+                    </div>
+                </div>
+                <div class="artifact-text">
+                    <div class="artifact-number">ARTIFACT 04</div>
+                    <h2 class="artifact-title">Billionaires Playing Astronaut</h2>
+                    <p class="artifact-description">
+                        Jeff Bezos, Elon Musk, and Richard Branson all spent billions racing to space while their employees struggled with warehouse conditions and union-rights. Bezos's 11-minute space flight cost roughly $5.5 billion in development—money that could have given each of his 1.3 million employees a $4,000 bonus.
+                    </p>
+                    <div class="interactive-stat">Cost of billionaire space race: $10+ billion</div>
+                    <div class="interactive-stat"> U.S. child poverty rate: 16.9% in 2024</div>
+                    <p class="artifact-description" style="margin-top: 1rem;">
+                        This artifact shows the horrifing wealth inequality of the 2020s. Like Tom and Daisy Buchanan's careless wealth in Gatsby, these wasteful projects represent how extreme wealth disconnects people from reality. The 2020s showed us that money doesn't buy happiness: it buys rockets to escape the problems that the same money created.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artifact 5: Social Media Influencer Economy -->
+        <section class="section" data-section="5">
+            <div class="artifact-container">
+                <div class="artifact-image">
+                    <div class="placeholder-img">
+                        <img src="Art05.webp" alt="Influencer Economy">
+                    </div>
+                </div>
+                <div class="artifact-text">
+                    <div class="artifact-number">ARTIFACT 05</div>
+                    <h2 class="artifact-title">Selling Dreams with every post</h2>
+                    <p class="artifact-description">
+                        The influencer economy exploded to $21 billion by 2023, with top creators earning millions from sponsored posts. MrBeast became the highest-paid YouTuber, earning $54 million in 2021 alone. TikTok created a new class of teenage millionaires who monetized their lives for our entertainment.
+                    </p>
+                    <div class="interactive-stat">Top influencers earn $20M+ annually</div>
+                    <div class="interactive-stat">99% of aspiring influencers earn less than minimum wage</div>
+                    <p class="artifact-description" style="margin-top: 1rem;">
+                        Like Gatsby's green light, the influencer lifestyle represents the unattainable dream for millions. Kids chase viral fame while algorithms exploit their content for their own selfish profit. This artifact shows how wealth in the 2020s is performative. You only as rich as your last posts shows.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artifact 6: Student Debt Crisis -->
+        <section class="section" data-section="6">
+            <div class="artifact-container">
+                <div class="artifact-image">
+                    <div class="placeholder-img">
+                        <img src="Art06.png" alt="Student Debt">
+                    </div>
+                </div>
+                <div class="artifact-text">
+                    <div class="artifact-number">ARTIFACT 06</div>
+                    <h2 class="artifact-title">The $1.7 Trillion chains</h2>
+                    <p class="artifact-description">
+                        Student loan debt reached $1.7 trillion by 2024, shackling an entire generation. College costs increased 180% since 1980 while wages stayed practically the same. The promise that education leads to wealth became a cruel joke. The same education that promises us jobs and houses right out of college now gives us layers of debt and a more selective job market then ever before.
+                    </p>
+                    <div class="interactive-stat"> Average debt per borrower: $38,000</div>
+                    <div class="interactive-stat">Average repayment time: 20 years</div>
+                    <p class="artifact-description" style="margin-top: 1rem;">
+                        This artifact reveals how wealth in the 2020s is more and more gatekept. The American Dream now needs one to take crushing debt for a chance, not even a garuntee, at stability. Unlike Gatsby's self-made (little illegal) fortune, the next generation of the workforce must choose between education and financial freedom.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artifact 7: Wealth Inequality Statistics -->
+        <section class="section" data-section="7">
+            <div class="artifact-container">
+                <div class="artifact-image">
+                    <div class="placeholder-img">
+                        <img src="Art07.jpeg" alt="Wealth Inequality">
+                    </div>
+                </div>
+                <div class="artifact-text">
+                    <div class="artifact-number">ARTIFACT 07</div>
+                    <h2 class="artifact-title">The Great Divide</h2>
+                    <p class="artifact-description">
+                        By 2024, the top 1% of Americans held 32% of the nation's wealth, while the bottom 50% held just 2%. Billionaire wealth increased by 70% during the pandemic while 60% of Americans lived paycheck to paycheck. The gap between rich and poor reached levels that were not seen since the 1920s. Which was right before the Great Depression.
+                    </p>
+                    <div class="interactive-stat"> CEO-to-worker pay ratio: 399:1 (2024)</div>
+                    <div class="interactive-stat"> Middle class shrinking annually since 1971</div>
+                    <p class="artifact-description" style="margin-top: 1rem;">
+                        This final artifact answers the most essential question most directly: wealth in the 2020s is not a way to happiness but a corrupting force that divides America in to shards. Like the moral emptiness of the Buchanans' mansion, extreme wealth exists right next door to poverty, blind to the suffering it causes. The 2020s taught us that money can't buy meaning, community, or equity...but it can buy rockets, NFTs, and temporary distraction from these truths.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <div class="conclusion section" data-section="8">
+            <h2>Gatsby's Question, Our Answer</h2>
+            <div class="conclusion-text">
+                The 2020s answered Fitzgerald's century-old question about wealth with clarity. Money didn't bring happiness. it brought rockets for billionaires and debt for students. It created AI fortunes while destroying the regular workers. But it also turned culture into commodity, whether through anime streaming or gatherings making their skills open to a global stage, providing creators with new ways to reaching fans worldwide. But, the green light Gatsby chased ultimately has now become our phone screens, promising wealth and fulfillment while delivering only pain and inequality.
+            </div>
+            <div class="quote">
+                "So we beat on, boats against the current, borne back ceaselessly into the past."
+                <div style="font-size: 1rem; margin-top: 1rem; font-style: normal;">— F. Scott Fitzgerald, The Great Gatsby</div>
+            </div>
+            <div class="conclusion-text">
+                A hundred years after Gatsby, we're still chasing the same illusion: that wealth equals worth, that money can fill the voids in our lives, that the next big thing will finally deliver the American Dream. The 2020s showed us that technology changes, but human nature and the corruption of extreme wealth remains constant.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function enterMuseum() {
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+            observeSections();
+        }
+
+        function observeSections() {
+            const sections = document.querySelectorAll('.section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // Add parallax effect to background patterns
+        window.addEventListener('scroll', () => {
+            const patterns = document.querySelectorAll('.bg-pattern');
+            patterns.forEach(pattern => {
+                const speed = 0.5;
+                const yPos = -(window.scrollY * speed);
+                pattern.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Interactive stats
+        document.querySelectorAll('.interactive-stat').forEach(stat => {
+            stat.addEventListener('click', function() {
+                this.style.background = 'rgba(255, 215, 0, 0.3)';
+                setTimeout(() => {
+                    this.style.background = 'rgba(255, 215, 0, 0.1)';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
