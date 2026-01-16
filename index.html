@@ -88,6 +88,57 @@
             display: none;
         }
 
+        .thesis-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .thesis-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .thesis-container {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .thesis-label {
+            font-size: 1rem;
+            color: #ffd700;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+        }
+
+        .thesis-statement {
+            font-size: 1.8rem;
+            line-height: 2;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            padding: 3rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 215, 0, 0.05);
+            font-style: italic;
+        }
+
+        .thesis-context {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #c0c0c0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .section {
             min-height: 100vh;
             padding: 4rem 2rem;
@@ -216,6 +267,7 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
+            .thesis-statement { font-size: 1.4rem; padding: 2rem; }
             .artifact-container {
                 grid-template-columns: 1fr !important;
                 direction: ltr !important;
@@ -271,6 +323,19 @@
     </div>
 
     <div class="main-content" id="mainContent">
+        <!-- Thesis Section -->
+        <div class="thesis-section section" data-section="0">
+            <div class="thesis-container">
+                <div class="thesis-label">MUSEUM THESIS</div>
+                <div class="thesis-statement">
+                    While the anime industry's explosion suggests that 2020s wealth could foster genuine community and creative opportunity, the decade's dominant financial forces (from crypto speculation to billionaire vanity projects) reveal that like Gatsby's parties masking moral decay, extreme prosperity still coexists with devastating inequality. A century later, money rarely buys meaning, only distraction from the emptiness it creates.
+                </div>
+                <div class="thesis-context">
+                    As you explore this museum, you'll encounter seven artifacts that document the complex relationship between wealth and happiness in the 2020s. The first exhibit challenges the cynical view, showing how cultural industries created authentic value. But the remaining artifacts reveal darker patterns: technologies that promised democratized wealth, vanity projects that ignored human suffering, and systemic forces that widened the gap between rich and poor. Together, these artifacts answer Gatsby's central question about whether money can buy happiness—and the 2020s give us a nuanced, ultimately tragic answer.
+                </div>
+            </div>
+        </div>
+
         <!-- Artifact 1: Anime Industry Explosion -->
         <section class="section" data-section="1">
             <div class="bg-pattern"></div>
@@ -284,11 +349,11 @@
                     <div class="artifact-number">ARTIFACT 01</div>
                     <h2 class="artifact-title">The Anime Gold Rush</h2>
                     <p class="artifact-description">
-                        The anime industry really went off in the 2020. This was due to the boredom that came with home arrest during covid, turning the niche community into a multi-billion dollar global economy. For example, Demon Slayer: Mugen Train was the highest-grossing film of 2020 worldwide,  which earned the movie and Ufoltable(the studio) over $500 million. Streaming platforms like Crunchyroll sold to Sony for preposterously large amounts of money like $1.2 billion in 2021. All the while, anime conventions became massive gatherings fueling local passon and small businesses related to this industry.
+                        The anime industry's transformation in the 2020s stands apart from other wealth stories of the decade. Here, money actually created something meaningful. When the pandemic forced everyone into isolation, anime didn't just generate profits. It built genuine communities across the globe. Demon Slayer: Mugen Train became the highest-grossing film of 2020 worldwide, earning over $500 million. But unlike crypto speculation or NFT schemes, people got something real in return. They got stories that resonated across cultures and languages. Sony's $1.2 billion purchase of Crunchyroll in 2021 wasn't just corporate consolidation. It legitimized a medium that had been dismissed as niche for decades, opening doors for creators worldwide.
                     </p>
                     <a href="https://example1.com" target="_blank" class="interactive-stat">Global anime market: $30+ billion by 2025</a>
                     <p class="artifact-description" style="margin-top: 1rem;">
-                        This artifact shows how cultural products once dismissed as "cartoons" became legit wealth generators, creating millionaire voice actors, animators, and content creators. In our era wealth isn't just from industries like business or engineering but also in the storytelling and the entertainment that brought people all over the world together in an period of disconnect in our lives.
+                        Anime conventions exploded into massive gatherings where fans found belonging, small businesses thrived, and voice actors, animators, and content creators built careers doing work they loved. The global market reaching over $30 billion by 2025 represented something unusual for the 2020s. This was wealth that didn't come at someone else's expense. Unlike Gatsby throwing parties to fill a void, anime wealth emerged from genuine passion meeting global appetite. Creators earned money by bringing people together rather than by exploiting their loneliness. This suggested that perhaps wealth could build community instead of destroying it.
                     </p>
                 </div>
             </div>
@@ -306,12 +371,12 @@
                     <div class="artifact-number">ARTIFACT 02</div>
                     <h2 class="artifact-title">AI: Creating and Destroying Fortunes</h2>
                     <p class="artifact-description">
-                        ChatGPT reached 100 million users faster than any app in history. OpenAI's value boalstered to $157 billion by 2025, while AI art tools like Midjourney created new creative economies. But this wealth came with lost lives too: voice actors, artists, and writers watched AI tools trained for a few hours impersonate their work and threaten the things they worked their entire lives for.
+                        If anime showed wealth building community, AI revealed its opposite. Fortunes concentrated in the hands of a few while entire professions faced extinction. ChatGPT reached 100 million users faster than any app in history, and OpenAI's valuation ballooned to $157 billion by 2025. The speed was unprecedented, the wealth astronomical, and the human cost largely ignored. Voice actors who spent decades mastering their craft watched AI tools learn to mimic them in hours. Artists saw their styles replicated without permission or compensation. Writers discovered their job descriptions now included "AI oversight" rather than actual creation.
                     </p>
                     <a href="https://example2.com" target="_blank" class="interactive-stat">New roles created: Prompt engineers, AI ethicists, AI trainers</a>
                     <a href="https://example3.com" target="_blank" class="interactive-stat">Jobs threatened: Traditional artists, writers, customer service</a>
                     <p class="artifact-description" style="margin-top: 1rem;">
-                        Wealth in the AI age goes to people who own the technology, not really to the whose labor Ccreated it in the first palce. This artifact shows how innovation creates billionaires while, at the same time, disrupting millions of lower and middle class workers which happens multiple times through the American economic history.
+                        Tools like Midjourney generated billions in value, but that value flowed upward to tech CEOs, not to the artists whose work trained the algorithms. New roles emerged like prompt engineers, AI ethicists, and AI trainers. But they couldn't replace the traditional artists, writers, and customer service workers whose jobs simply disappeared. Tom Buchanan never had to work for his inheritance. AI billionaires never had to compensate the labor that built their empires. The technology promised to democratize creativity, but instead it revealed an uncomfortable truth. Ownership matters more than contribution, and those who own the tools will always profit more than those who actually create.
                     </p>
                 </div>
             </div>
@@ -329,12 +394,12 @@
                     <div class="artifact-number">ARTIFACT 03</div>
                     <h2 class="artifact-title">Digital Gold and Fool's Gold</h2>
                     <p class="artifact-description">
-                        Bitcoin hit an all-time high of $69,000 in 2021, literally creating overnight millionaires and reviving the American dream of sudden wealth. NFTs sold for millions, Beeple's digital art earned $69 million. But by 2022, the crypto market crashed, destroying $2 trillion in value. 
+                        The green light glows different colors in different eras. In the 2020s, it glowed digital. Bitcoin hit $69,000 in 2021, creating overnight millionaires and reviving the oldest American fantasy. Sudden wealth through mysterious means. NFTs sold for millions. Beeple's digital art fetched $69 million. For a moment, it seemed like anyone could get rich by understanding blockchain before their neighbors did. The peak market cap reached $3 trillion, more money than most people could conceptualize. All built on what, exactly? Code? Belief? Speculation?
                     </p>
                     <a href="https://example4.com" target="_blank" class="interactive-stat">Peak crypto market cap: $3 trillion (2021)</a>
                     <a href="https://example5.com" target="_blank" class="interactive-stat">Lives ruined by speculation and scams</a>
                     <p class="artifact-description" style="margin-top: 1rem;">
-                        Gatsby's parties funded by mysterious business dealings, likewise crypto promised wealth without clear sources. It represented the corruption of the get-rich-quick schemes that leave ordinary Americans holding the gambeling their bag while the early adopters took out the money on the oppurtunity. 
+                        By 2022, the answer became brutally clear. Nothing solid. The market crashed, destroying $2 trillion in value. Lives ruined by speculation and scams became so common they stopped making headlines. The pattern repeated itself with mechanical precision. Early adopters cashed out wealthy, ordinary Americans bought at the peak, and the dream collapsed just as they'd mortgaged everything on it. Gatsby built his fortune on bootlegging, at least dealing in physical goods that people wanted. Crypto promised wealth without sources, without regulation, without anything real backing it except collective delusion. Those who got out early called themselves visionaries. Those who didn't called themselves fools. Neither was wrong.
                     </p>
                 </div>
             </div>
@@ -352,12 +417,12 @@
                     <div class="artifact-number">ARTIFACT 04</div>
                     <h2 class="artifact-title">Billionaires Playing Astronaut</h2>
                     <p class="artifact-description">
-                        Jeff Bezos, Elon Musk, and Richard Branson all spent billions racing to space while their employees struggled with warehouse conditions and union-rights. Bezos's 11-minute space flight cost roughly $5.5 billion in development—money that could have given each of his 1.3 million employees a $4,000 bonus.
+                        Jeff Bezos spent eleven minutes in space. The cost? Roughly $5.5 billion in development. That's enough to give each of his 1.3 million employees a $4,000 bonus, or to lift thousands of children out of poverty in a country where 16.9% of kids lived below the poverty line in 2024. Instead, he got eleven minutes of weightlessness and a cowboy hat. Elon Musk and Richard Branson joined the race, each spending billions on vanity projects while their employees fought for bathroom breaks and union rights.
                     </p>
                     <a href="https://example6.com" target="_blank" class="interactive-stat">Cost of billionaire space race: $10+ billion</a>
                     <a href="https://example7.com" target="_blank" class="interactive-stat">U.S. child poverty rate: 16.9% in 2024</a>
                     <p class="artifact-description" style="margin-top: 1rem;">
-                        This artifact shows the horrifing wealth inequality of the 2020s. Like Tom and Daisy Buchanan's careless wealth in Gatsby, these wasteful projects represent how extreme wealth disconnects people from reality. The 2020s showed us that money doesn't buy happiness: it buys rockets to escape the problems that the same money created.
+                        The combined cost exceeded $10 billion. Money that could have transformed communities, funded education, addressed climate change. But transforming communities doesn't get you on magazine covers. Tom and Daisy Buchanan smashed up things and people, then retreated into their money. These billionaires didn't even pretend to care about the wreckage. They literally left the planet while the problems their wealth created continued to fester on the ground. The 2020s gave us the most honest display of extreme wealth in American history. When you have enough money, you don't fix Earth's problems. You escape them entirely, leaving everyone else to suffocate in what remains.
                     </p>
                 </div>
             </div>
@@ -373,14 +438,14 @@
                 </div>
                 <div class="artifact-text">
                     <div class="artifact-number">ARTIFACT 05</div>
-                    <h2 class="artifact-title">Selling Dreams with every post</h2>
+                    <h2 class="artifact-title">Selling Dreams with Every Post</h2>
                     <p class="artifact-description">
-                        The influencer economy exploded to $21 billion by 2023, with top creators earning millions from sponsored posts. MrBeast became the highest-paid YouTuber, earning $54 million in 2021 alone. TikTok created a new class of teenage millionaires who monetized their lives for our entertainment.
+                        MrBeast earned $54 million in 2021. Thousands of teenagers became millionaires on TikTok. The influencer economy exploded to $21 billion by 2023, and suddenly everyone with a phone thought they could be next. This was the promise. Monetize your life, be authentic, get rich. The reality? Ninety-nine percent of aspiring influencers earn less than minimum wage. They film their lives, edit their personalities, perform happiness for algorithms that care only about engagement metrics.
                     </p>
                     <a href="https://example8.com" target="_blank" class="interactive-stat">Top influencers earn $20M+ annually</a>
                     <a href="https://example9.com" target="_blank" class="interactive-stat">99% of aspiring influencers earn less than minimum wage</a>
                     <p class="artifact-description" style="margin-top: 1rem;">
-                        Like Gatsby's green light, the influencer lifestyle represents the unattainable dream for millions. Kids chase viral fame while algorithms exploit their content for their own selfish profit. This artifact shows how wealth in the 2020s is performative. You only as rich as your last posts shows.
+                        The successful few earning over $20 million annually make it look effortless, which is the cruelest part. They're not lucky, they insist. They're just authentic. They just worked hard. They just happened to post the right video at the right time, figured out the algorithm, built their brand. And millions believe them, keep filming, keep posting, keep hoping that the next video will be the one that changes everything. Gatsby threw parties hoping one night Daisy would walk through the door. Modern kids post videos hoping one will go viral. Both are chasing lights that recede the moment you reach for them. The difference is Gatsby at least got parties. Most influencers get nothing but time wasted and lives unlived while performing for strangers who scroll past without remembering their names.
                     </p>
                 </div>
             </div>
@@ -396,14 +461,14 @@
                 </div>
                 <div class="artifact-text">
                     <div class="artifact-number">ARTIFACT 06</div>
-                    <h2 class="artifact-title">The $1.7 Trillion chains</h2>
+                    <h2 class="artifact-title">The $1.7 Trillion Chains</h2>
                     <p class="artifact-description">
-                        Student loan debt reached $1.7 trillion by 2024, shackling an entire generation. College costs increased 180% since 1980 while wages stayed practically the same. The promise that education leads to wealth became a cruel joke. The same education that promises us jobs and houses right out of college now gives us layers of debt and a more selective job market then ever before.
+                        Gatsby could at least try to build wealth, even if he had to break laws to do it. The 2020s offered no such option. Want a shot at middle-class stability? That'll be $38,000 in debt, on average, with a 20-year repayment plan. Student loan debt reached $1.7 trillion by 2024, shackling an entire generation before they'd even started their careers. College costs increased 180% since 1980. Wages stayed flat. The math didn't work, but what choice did people have?
                     </p>
                     <a href="https://example10.com" target="_blank" class="interactive-stat">Average debt per borrower: $38,000</a>
                     <a href="https://example11.com" target="_blank" class="interactive-stat">Average repayment time: 20 years</a>
                     <p class="artifact-description" style="margin-top: 1rem;">
-                        This artifact reveals how wealth in the 2020s is more and more gatekept. The American Dream now needs one to take crushing debt for a chance, not even a garuntee, at stability. Unlike Gatsby's self-made (little illegal) fortune, the next generation of the workforce must choose between education and financial freedom.
+                        Don't go to college, watch doors close before you even approach them. Go to college, spend two decades paying for the privilege. The promise was simple. Education leads to prosperity. The reality was crueler. Education leads to debt, and maybe, if you're lucky and choose the right major and graduate in the right economy and don't face any unexpected setbacks, that debt eventually leads to stability. Not wealth. Not freedom. Just stability, if you're fortunate. The American Dream once meant you could work your way up from nothing. Now it means you mortgage your future for a chance to not fall further behind. That's not a dream. That's a ransom note.
                     </p>
                 </div>
             </div>
@@ -421,12 +486,12 @@
                     <div class="artifact-number">ARTIFACT 07</div>
                     <h2 class="artifact-title">The Great Divide</h2>
                     <p class="artifact-description">
-                        By 2024, the top 1% of Americans held 32% of the nation's wealth, while the bottom 50% held just 2%. Billionaire wealth increased by 70% during the pandemic while 60% of Americans lived paycheck to paycheck. The gap between rich and poor reached levels that were not seen since the 1920s. Which was right before the Great Depression.
+                        The numbers tell a story that rhetoric can't soften. By 2024, the top 1% held 32% of America's wealth. The bottom 50% held 2%. During the pandemic, while 60% of Americans lived paycheck to paycheck, billionaire wealth increased by 70%. CEOs earned 399 times what their average workers made. Not because they worked 399 times harder, but because the system was designed to concentrate wealth at the top. The middle class shrunk annually since 1971, each year losing more ground, more stability, more hope.
                     </p>
                     <a href="https://example12.com" target="_blank" class="interactive-stat">CEO-to-worker pay ratio: 399:1 (2024)</a>
                     <a href="https://example13.com" target="_blank" class="interactive-stat">Middle class shrinking annually since 1971</a>
                     <p class="artifact-description" style="margin-top: 1rem;">
-                        This final artifact answers the most essential question most directly: wealth in the 2020s is not a way to happiness but a corrupting force that divides America in to shards. Like the moral emptiness of the Buchanans' mansion, extreme wealth exists right next door to poverty, blind to the suffering it causes. The 2020s taught us that money can't buy meaning, community, or equity...but it can buy rockets, NFTs, and temporary distraction from these truths.
+                        These aren't just statistics. They're the architecture of two Americas that barely recognize each other's existence. One America launches vanity rockets, buys yachts for their yachts, plays with billions while calling it investment. The other America chooses between rent and healthcare, works multiple jobs and still falls behind, watches their children inherit less opportunity than they had. Fitzgerald wrote about the valley of ashes visible from Tom Buchanan's mansion, but at least the Buchanans could see the suffering their wealth ignored. Modern inequality is more insidious. Algorithms and gated communities and class segregation ensure the rich never have to witness what their wealth costs. The 2020s didn't just repeat the inequality of the 1920s. We perfected it, automated it, made it invisible to those who benefit most.
                     </p>
                 </div>
             </div>
@@ -436,14 +501,14 @@
         <div class="conclusion section" data-section="8">
             <h2>Gatsby's Question, Our Answer</h2>
             <div class="conclusion-text">
-                The 2020s answered Fitzgerald's century-old question about wealth with clarity. Money didn't bring happiness. it brought rockets for billionaires and debt for students. It created AI fortunes while destroying the regular workers. But it also turned culture into commodity, whether through anime streaming or gatherings making their skills open to a global stage, providing creators with new ways to reaching fans worldwide. But, the green light Gatsby chased ultimately has now become our phone screens, promising wealth and fulfillment while delivering only pain and inequality.
+                The anime industry proved it was possible. Wealth could build genuine community, create opportunities, bring people together across borders. For a moment, it seemed like maybe the 2020s would write a different story than the 1920s, that money could be a force for connection rather than corruption. But one exception doesn't make a rule. The dominant forces of the decade (crypto speculation that destroyed lives, AI that displaced workers, billionaires who literally fled Earth rather than address its problems, influencer culture that sold false dreams, student debt that trapped entire generations, and inequality that reached levels unseen in a century) all told the same old story Fitzgerald warned us about. Money brought rockets and NFTs and viral fame, but not happiness. Not meaning. Not equity.
             </div>
             <div class="quote">
                 "So we beat on, boats against the current, borne back ceaselessly into the past."
                 <div style="font-size: 1rem; margin-top: 1rem; font-style: normal;">— F. Scott Fitzgerald, The Great Gatsby</div>
             </div>
             <div class="conclusion-text">
-                A hundred years after Gatsby, we're still chasing the same illusion: that wealth equals worth, that money can fill the voids in our lives, that the next big thing will finally deliver the American Dream. The 2020s showed us that technology changes, but human nature and the corruption of extreme wealth remains constant.
+                A hundred years after Gatsby, we're still chasing the same illusion. Anime showed us what wealth could be. A tool for building community and supporting creativity. But crypto, AI, space races, influencer culture, student debt, and systemic inequality showed us what wealth usually is. A corrupting force that concentrates at the top while everyone else fights for scraps. The green light still glows across the water, promising that the next innovation, the next investment, the next viral post will finally deliver the dream. The 2020s taught us what the 1920s should have. Technology changes, fortunes rise and fall, but human nature and the corruption of extreme wealth remain constant. We're living through a new Roaring '20s, and we already know how this story ends.
             </div>
         </div>
     </div>
